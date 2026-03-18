@@ -700,3 +700,34 @@ footer .quicklinks li a:hover {
 }
 
 [Rest of the file remains exactly the same...]
+
+/* ---------- Teeopticals navbar logo sizing ---------- */
+#mainNav .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#mainNav .navbar-brand img {
+  height: 90px;
+  width: auto;
+  display: block;
+}
+
+#mainNav.navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+#mainNav .navbar-nav .nav-link {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+  #mainNav .navbar-brand img {
+    height: 70px;
+  }
+}
