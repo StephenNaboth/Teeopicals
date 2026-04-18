@@ -1,0 +1,48 @@
+/* Animated backgrounds */
+@keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-30px) scale(1.1)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-50px,40px) scale(0.9)} }
+@keyframes drift3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,50px)} }
+@keyframes floatY  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
+.bg-halo { position:absolute; border-radius:50%; filter:blur(60px); pointer-events:none; z-index:0; }
+.bg-halo.a1 { animation: drift1 18s ease-in-out infinite; }
+.bg-halo.a2 { animation: drift2 22s ease-in-out infinite; }
+.bg-halo.a3 { animation: drift3 26s ease-in-out infinite; }
+
+/* Animated gradient grain overlay */
+.grain-layer {
+  position:absolute; inset:0; pointer-events:none; opacity:.035; z-index:1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Iris ring pulse */
+@keyframes ringPulse {
+  0% { transform:scale(0.8); opacity:0.6 }
+  100% { transform:scale(2.2); opacity:0 }
+}
+.iris-ring { position:absolute; border:1.5px solid var(--iris-500); border-radius:50%; animation: ringPulse 3.8s ease-out infinite; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  :root { --nav-h:64px; }
+  .container { padding-left: 20px; padding-right:20px; }
+  h1 { font-size: 32px !important; line-height: 36px !important; }
+  .display-xl { font-size: 48px !important; line-height: 52px !important; }
+  .display-lg { font-size: 36px !important; line-height: 40px !important; }
+}
+@media (max-width: 640px) {
+  .container { padding-left: 16px; padding-right:16px; }
+  .display-xl { font-size: 40px !important; line-height: 44px !important; }
+  .display-lg { font-size: 30px !important; line-height: 34px !important; }
+  h1 { font-size: 28px !important; line-height: 32px !important; }
+  h2 { font-size: 22px !important; line-height: 28px !important; }
+  .btn-lg { padding: 14px 20px !important; font-size: 16px !important; }
+}
+
+.hide-mobile { display: initial; }
+.show-mobile { display: none; }
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: initial !important; }
+}

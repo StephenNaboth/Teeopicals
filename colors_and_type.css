@@ -1,0 +1,258 @@
+/* ============================================================
+   Teeopticals Design System — colors_and_type.css
+   Source of truth for color, type, spacing, radii, elevation.
+   ============================================================ */
+
+/* ---------- Fonts (Google Fonts — flagged substitutions) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Color — Brand ---------- */
+  --iris-900: #0A3D30;   /* deep brand, hover on primary */
+  --iris-700: #0B5643;   /* large-area brand */
+  --iris-600: #0E6B53;   /* PRIMARY — buttons, links, logo */
+  --iris-500: #14846A;   /* accent, progress */
+  --iris-300: #9BCEC0;   /* tinted icons */
+  --iris-100: #DCEFE7;   /* tinted backgrounds */
+  --iris-50:  #EEF7F3;   /* lightest tint */
+
+  /* ---------- Color — Warm accent ---------- */
+  --coral-700: #BF4A35;
+  --coral-500: #F26E56;  /* accent — use once per screen */
+  --coral-300: #F9B4A5;
+  --coral-100: #FCE1D9;
+
+  /* ---------- Color — Neutrals ---------- */
+  --cream-50:  #FAF6EF;  /* default page ground */
+  --cream-100: #F3ECDC;  /* section alt ground */
+  --paper:     #FFFFFF;  /* cards, panels */
+  --ink-900:   #141414;  /* body copy, headings */
+  --ink-700:   #2F2F2D;
+  --ink-500:   #5B5B58;  /* secondary text */
+  --ink-400:   #8A8A85;  /* captions, placeholders */
+  --line-200:  #E6E0D4;  /* hairlines, borders */
+  --line-100:  #F0EBDF;  /* subtle dividers */
+
+  /* ---------- Color — Semantic ---------- */
+  --success:   #0E6B53;  /* = iris-600 */
+  --warning:   #D6A437;
+  --danger:    #C54A3A;
+  --info:      #3B6BA5;
+
+  /* ---------- Foreground / Background semantic pairs ---------- */
+  --fg-1: var(--ink-900);    /* primary text */
+  --fg-2: var(--ink-500);    /* secondary text */
+  --fg-3: var(--ink-400);    /* tertiary */
+  --fg-brand: var(--iris-600);
+  --fg-on-brand: var(--cream-50);
+  --bg-1: var(--cream-50);   /* page */
+  --bg-2: var(--paper);      /* card */
+  --bg-3: var(--cream-100);  /* alt section */
+  --bg-brand: var(--iris-600);
+  --bg-brand-soft: var(--iris-100);
+
+  /* ---------- Type — families ---------- */
+  --font-display: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sans:    'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ---------- Type — scale ---------- */
+  --text-display-xl: 72px;  --lh-display-xl: 76px;
+  --text-display-lg: 56px;  --lh-display-lg: 60px;
+  --text-h1:         40px;  --lh-h1:         44px;
+  --text-h2:         30px;  --lh-h2:         36px;
+  --text-h3:         22px;  --lh-h3:         28px;
+  --text-body-lg:    18px;  --lh-body-lg:    28px;
+  --text-body:       16px;  --lh-body:       26px;
+  --text-small:      14px;  --lh-small:      20px;
+  --text-micro:      12px;  --lh-micro:      16px;
+
+  /* ---------- Spacing (4-based) ---------- */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-24: 96px;
+  --s-32: 128px;
+
+  /* ---------- Radii ---------- */
+  --r-sm:   8px;
+  --r-md:  14px;    /* default card */
+  --r-lg:  22px;    /* hero imagery */
+  --r-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-sm:   0 1px 2px rgba(20,20,20,0.04), 0 1px 1px rgba(20,20,20,0.03);
+  --shadow-md:   0 6px 16px rgba(20,20,20,0.06), 0 2px 4px rgba(20,20,20,0.04);
+  --shadow-lg:   0 18px 40px rgba(20,20,20,0.08), 0 6px 12px rgba(20,20,20,0.05);
+  --shadow-halo: 0 0 0 6px rgba(14,107,83,0.08);
+
+  /* ---------- Motion ---------- */
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-micro:    120ms;
+  --dur-std:      220ms;
+  --dur-scene:    420ms;
+
+  /* ---------- Layout ---------- */
+  --max-w:     1200px;
+  --prose-w:   64ch;
+  --nav-h:     72px;
+  --nav-h-sm:  56px;
+}
+
+/* ============================================================
+   Semantic element styles
+   ============================================================ */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--s-4);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+h1 { font-family: var(--font-display); font-weight: 400; font-size: var(--text-h1); line-height: var(--lh-h1); letter-spacing: -0.01em; }
+h2 { font-family: var(--font-sans);    font-weight: 600; font-size: var(--text-h2); line-height: var(--lh-h2); letter-spacing: -0.005em; }
+h3 { font-family: var(--font-sans);    font-weight: 600; font-size: var(--text-h3); line-height: var(--lh-h3); }
+
+.display-xl, .display-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.display-xl { font-size: var(--text-display-xl); line-height: var(--lh-display-xl); }
+.display-lg { font-size: var(--text-display-lg); line-height: var(--lh-display-lg); }
+.display-italic { font-style: italic; }
+
+p {
+  margin: 0 0 var(--s-4);
+  max-width: var(--prose-w);
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--fg-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-micro) var(--ease-inout);
+}
+a:hover { color: var(--iris-900); }
+
+small, .text-small { font-size: var(--text-small); line-height: var(--lh-small); }
+
+.eyebrow, .text-micro {
+  font-size: var(--text-micro);
+  line-height: var(--lh-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-brand);
+}
+
+code, kbd, pre { font-family: var(--font-mono); font-size: 0.92em; }
+
+/* ============================================================
+   Components — buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-body);
+  line-height: 1;
+  padding: 14px 22px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--dur-micro) var(--ease-inout),
+              color var(--dur-micro) var(--ease-inout),
+              box-shadow var(--dur-std) var(--ease-out),
+              transform 80ms var(--ease-inout);
+}
+.btn:focus-visible { outline: 2px solid var(--iris-600); outline-offset: 2px; }
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--iris-600);
+  color: var(--fg-on-brand);
+}
+.btn-primary:hover {
+  background: var(--iris-900);
+  box-shadow: var(--shadow-halo);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--fg-brand);
+  border-color: var(--iris-600);
+}
+.btn-ghost:hover {
+  background: var(--iris-100);
+}
+
+.btn-coral {
+  background: var(--coral-500);
+  color: var(--paper);
+}
+.btn-coral:hover { background: var(--coral-700); }
+
+.btn-lg { padding: 18px 28px; font-size: var(--text-body-lg); }
+.btn-sm { padding: 10px 16px; font-size: var(--text-small); }
+
+/* ============================================================
+   Components — card
+   ============================================================ */
+.card {
+  background: var(--bg-2);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur-std) var(--ease-out), transform var(--dur-std) var(--ease-out);
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================================
+   Utility — containers
+   ============================================================ */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--s-6);
+  padding-right: var(--s-6);
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
