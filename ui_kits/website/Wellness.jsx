@@ -14,12 +14,12 @@ function Wellness() {
     { t:'Blink more', d:'Screens cut blink rate in half. Be intentional about it.' },
   ];
   return (
-    <section id="wellness" style={{padding:'96px 0', position:'relative', overflow:'hidden', background:'var(--cream-50)'}}>
+    <section id="wellness" className="py-section" style={{position:'relative', overflow:'hidden', background:'var(--cream-50)'}}>
       <AnimatedBg variant="light"/>
       <div className="container" style={{position:'relative', zIndex:2}}>
         <div style={{textAlign:'center', maxWidth:680, margin:'0 auto 48px'}}>
           <span className="eyebrow">Eye wellness · Afya ya macho</span>
-          <h2 className="display-lg" style={{fontSize:44, lineHeight:'50px', margin:'12px 0 12px'}}>
+          <h2 className="display-lg" style={{margin:'12px 0 12px'}}>
             Your plate is part of your prescription.
           </h2>
           <p style={{color:'var(--ink-500)', fontSize:17, margin:'0 auto', maxWidth:540}}>
@@ -28,12 +28,12 @@ function Wellness() {
         </div>
 
         <div style={{marginBottom:28}}>
-          <h3 style={{fontSize:18, marginBottom:16, display:'flex', alignItems:'center', gap:10}}>
-            <span style={{width:8, height:8, borderRadius:'50%', background:'var(--iris-600)'}}/>
+          <h3 style={{fontSize:18, marginBottom:16, display:'flex', alignItems:'center', gap:10, flexWrap:'wrap'}}>
+            <span style={{width:8, height:8, borderRadius:'50%', background:'var(--iris-600)', flexShrink:0}}/>
             Nutrition for your eyes
             <span style={{fontFamily:'var(--font-display)', fontStyle:'italic', color:'var(--ink-500)', fontSize:16, fontWeight:400}}>— chakula cha macho</span>
           </h3>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:14}}>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap:14}}>
             {items.map((it,i) => (
               <div key={i} className="card" style={{padding:20}}>
                 <div style={{fontSize:28, marginBottom:8}}>{it.ic}</div>
@@ -45,7 +45,7 @@ function Wellness() {
           </div>
         </div>
 
-        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:14, marginTop:36}}>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap:14, marginTop:36}}>
           {habits.map((h,i) => (
             <div key={i} style={{padding:20, background:'var(--iris-900)', color:'white', borderRadius:14, position:'relative', overflow:'hidden'}}>
               <div style={{fontSize:11, color:'var(--iris-300)', letterSpacing:'.14em', textTransform:'uppercase', fontWeight:600, marginBottom:8}}>Daily habit</div>

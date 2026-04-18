@@ -109,6 +109,10 @@
    Semantic element styles
    ============================================================ */
 
+html {
+  overflow-x: clip;
+}
+
 html, body {
   background: var(--bg-1);
   color: var(--fg-1);
@@ -118,6 +122,11 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: clip;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -155,6 +164,10 @@ a {
   transition: color var(--dur-micro) var(--ease-inout);
 }
 a:hover { color: var(--iris-900); }
+
+img {
+  max-width: 100%;
+}
 
 small, .text-small { font-size: var(--text-small); line-height: var(--lh-small); }
 
@@ -231,9 +244,11 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.92em; }
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--dur-std) var(--ease-out), transform var(--dur-std) var(--ease-out);
 }
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 /* ============================================================
@@ -241,9 +256,11 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.92em; }
    ============================================================ */
 .container {
   max-width: var(--max-w);
+  width: 100%;
   margin: 0 auto;
-  padding-left: var(--s-6);
-  padding-right: var(--s-6);
+  padding-left: max(var(--s-6), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--s-6), env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
 }
 
 /* ============================================================

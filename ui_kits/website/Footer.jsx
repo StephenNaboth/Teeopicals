@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer id="visit" style={{padding:'80px 0 40px', background:'var(--cream-100)'}}>
+    <footer id="visit" className="site-footer" style={{padding:'80px 0 40px', background:'var(--cream-100)'}}>
       <div className="container">
         <div className="footer-grid" style={{display:'grid', gridTemplateColumns:'1.2fr 1fr 1fr 1fr', gap:48, marginBottom:48}}>
           <div>
@@ -58,6 +58,9 @@ const footerStyle = document.createElement('style');
 footerStyle.textContent = `
   @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; } }
   @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr !important; } }
+  @media (max-width: 640px) {
+    .site-footer { padding-top: 56px !important; padding-bottom: max(32px, env(safe-area-inset-bottom, 0px)) !important; }
+  }
 `;
 document.head.appendChild(footerStyle);
 

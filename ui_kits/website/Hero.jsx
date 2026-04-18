@@ -1,11 +1,11 @@
 function Hero() {
   return (
-    <section style={{position:'relative', overflow:'hidden', paddingTop: 40, paddingBottom: 80}}>
+    <section className="hero-section" style={{position:'relative', overflow:'hidden', paddingTop: 40, paddingBottom: 80}}>
       <AnimatedBg variant="cream"/>
       <div className="container hero-grid" style={{position:'relative', zIndex:2, display:'grid', gridTemplateColumns:'1.1fr 0.9fr', gap:48, alignItems:'center'}}>
         <div>
           <span className="eyebrow">Tee Optometry Clinic · Usa River, Arusha</span>
-          <h1 className="display-xl" style={{marginTop:16, marginBottom:20, fontSize:76, lineHeight:'80px'}}>
+          <h1 className="display-xl" style={{marginTop:16, marginBottom:20}}>
             See clearly.<br/><em style={{color:'var(--iris-700)'}}>Feel seen.</em>
           </h1>
           <p style={{fontSize:19, lineHeight:'30px', color:'var(--ink-700)', maxWidth:480, marginBottom:28}}>
@@ -56,6 +56,8 @@ function Hero() {
         @media (max-width: 640px) {
           .stat-divider { display:none; }
           .hero-stats { gap: 14px !important; }
+          .hero-section { padding-top: 24px !important; padding-bottom: 48px !important; }
+          .hero-stat-cell > div:first-child { font-size: 24px !important; line-height: 26px !important; }
         }
       `}</style>
     </section>
@@ -64,7 +66,7 @@ function Hero() {
 
 function Stat({n, lbl}) {
   return (
-    <div>
+    <div className="hero-stat-cell">
       <div style={{fontFamily:'var(--font-display)', fontSize:28, lineHeight:'30px', color:'var(--ink-900)'}}>{n}</div>
       <div style={{fontSize:12, color:'var(--ink-500)', textTransform:'uppercase', letterSpacing:'.1em', fontWeight:600}}>{lbl}</div>
     </div>

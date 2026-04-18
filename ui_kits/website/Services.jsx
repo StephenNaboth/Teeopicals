@@ -21,12 +21,12 @@ function ServiceCard({icon, title, titleSw, desc, price, compact}) {
 
 function Services() {
   return (
-    <section id="clinic" style={{padding:'96px 0', background:'var(--cream-100)', position:'relative', overflow:'hidden'}}>
+    <section id="clinic" className="py-section" style={{background:'var(--cream-100)', position:'relative', overflow:'hidden'}}>
       <AnimatedBg variant="cream"/>
       <div className="container" style={{position:'relative', zIndex:2}}>
         <div style={{textAlign:'center', maxWidth:640, margin:'0 auto 48px'}}>
           <span className="eyebrow">Two sides, one clinic</span>
-          <h2 className="display-lg" style={{fontSize:46, lineHeight:'52px', margin:'12px 0 12px'}}>
+          <h2 className="display-lg" style={{margin:'12px 0 12px'}}>
             Clinical care + eyewear you'll actually wear.
           </h2>
           <p style={{color:'var(--ink-500)', fontSize:17, margin:'0 auto', maxWidth:520}}>
@@ -34,10 +34,10 @@ function Services() {
           </p>
         </div>
 
-        <div style={{display:'flex', alignItems:'center', gap:14, marginBottom:18}}>
-          <div style={{width:8, height:8, borderRadius:'50%', background:'var(--iris-600)'}}/>
+        <div className="svc-head-row" style={{display:'flex', alignItems:'center', gap:14, marginBottom:18, flexWrap:'wrap'}}>
+          <div style={{width:8, height:8, borderRadius:'50%', background:'var(--iris-600)', flexShrink:0}}/>
           <h3 style={{margin:0, fontSize:22}}>Tee Optometry Clinic</h3>
-          <span style={{fontFamily:'var(--font-display)', fontStyle:'italic', color:'var(--ink-500)', fontSize:18}}>— where every pair of eyes gets the time it deserves</span>
+          <span className="svc-head-tagline" style={{fontFamily:'var(--font-display)', fontStyle:'italic', color:'var(--ink-500)', fontSize:18}}>— where every pair of eyes gets the time it deserves</span>
         </div>
         <div className="svc-grid" style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:16, marginBottom:48}}>
           <ServiceCard icon={eyeIcon} title="Comprehensive eye exam" titleSw="Uchunguzi kamili" desc="Vision, pressure, retina health. About 30 minutes." price="TZS 25,000"/>
@@ -46,10 +46,10 @@ function Services() {
           <ServiceCard icon={monitorIcon} title="Dry eye & screen strain" titleSw="Macho ya kompyuta" desc="Treatment for long-hours-on-laptop eyes."/>
         </div>
 
-        <div style={{display:'flex', alignItems:'center', gap:14, marginBottom:18}}>
-          <div style={{width:8, height:8, borderRadius:'50%', background:'var(--coral-500)'}}/>
+        <div className="svc-head-row" style={{display:'flex', alignItems:'center', gap:14, marginBottom:18, flexWrap:'wrap'}}>
+          <div style={{width:8, height:8, borderRadius:'50%', background:'var(--coral-500)', flexShrink:0}}/>
           <h3 style={{margin:0, fontSize:22}}>Tee Opticals Retail</h3>
-          <span style={{fontFamily:'var(--font-display)', fontStyle:'italic', color:'var(--ink-500)', fontSize:18}}>— duka la miwani</span>
+          <span className="svc-head-tagline" style={{fontFamily:'var(--font-display)', fontStyle:'italic', color:'var(--ink-500)', fontSize:18}}>— duka la miwani</span>
         </div>
         <div className="svc-grid" style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:16}}>
           <ServiceCard icon={glassesIcon} title="Prescription frames" titleSw="Miwani ya dawa" desc="Stylish frames fitted to your prescription."/>
@@ -61,6 +61,9 @@ function Services() {
       <style>{`
         @media (max-width: 960px) { .svc-grid { grid-template-columns: repeat(2, 1fr) !important; } }
         @media (max-width: 520px) { .svc-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 640px) {
+          .svc-head-tagline { flex-basis: 100%; font-size: 16px !important; margin-top: 4px; }
+        }
       `}</style>
     </section>
   );

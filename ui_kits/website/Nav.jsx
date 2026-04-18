@@ -23,10 +23,10 @@ function Nav() {
       transition: 'all 220ms var(--ease-out)',
       display: 'flex', alignItems: 'center'
     }}>
-      <div className="container" style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'100%'}}>
-        <a href="#" style={{display:'flex', alignItems:'center', gap:10, textDecoration:'none'}}>
-          <img src="assets/logo.png" alt="" style={{height: scrolled?30:38, width:'auto', transition:'height 220ms'}}/>
-          <span style={{fontFamily:'var(--font-display)', fontSize:22, color:'var(--ink-900)', letterSpacing:'-.01em'}}>Teeopticals</span>
+      <div className="container nav-inner" style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'100%', gap:12, minWidth:0}}>
+        <a href="#" style={{display:'flex', alignItems:'center', gap:10, textDecoration:'none', minWidth:0}}>
+          <img src="assets/logo.png" alt="" style={{height: scrolled?30:38, width:'auto', transition:'height 220ms', flexShrink:0}}/>
+          <span className="nav-brand" style={{fontFamily:'var(--font-display)', fontSize:22, color:'var(--ink-900)', letterSpacing:'-.01em'}}>Teeopticals</span>
         </a>
 
         <div className="hide-mobile" style={{display:'flex', gap:4, alignItems:'center'}}>
@@ -40,13 +40,15 @@ function Nav() {
         </div>
 
         <button
-          className="show-mobile"
+          type="button"
+          className="show-mobile nav-hamburger"
           onClick={() => setOpen(o => !o)}
           aria-label="Menu"
+          aria-expanded={open}
           style={{
-            display:'none', background:'transparent', border:'1px solid var(--line-200)',
+            background:'transparent', border:'1px solid var(--line-200)',
             width:44, height:44, borderRadius:12, cursor:'pointer', padding:0,
-            alignItems:'center', justifyContent:'center'
+            flexShrink: 0,
           }}>
           <div style={{width:18, height:12, position:'relative'}}>
             <span style={{position:'absolute', top:open?5:0, left:0, right:0, height:1.5, background:'var(--ink-900)', transform:open?'rotate(45deg)':'none', transition:'.22s'}}/>

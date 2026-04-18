@@ -7,13 +7,13 @@ function Blog() {
   ];
   const colors = ['var(--iris-600)', 'var(--coral-500)', 'var(--iris-700)', 'var(--iris-500)'];
   return (
-    <section id="blog" style={{padding:'96px 0', background:'var(--cream-100)', position:'relative', overflow:'hidden'}}>
+    <section id="blog" className="py-section" style={{background:'var(--cream-100)', position:'relative', overflow:'hidden'}}>
       <AnimatedBg variant="cream"/>
       <div className="container" style={{position:'relative', zIndex:2}}>
         <div style={{display:'flex', alignItems:'flex-end', justifyContent:'space-between', marginBottom:36, flexWrap:'wrap', gap:16}}>
           <div>
             <span className="eyebrow">Eye care tips</span>
-            <h2 className="display-lg" style={{fontSize:42, lineHeight:'48px', margin:'12px 0 0', maxWidth:520}}>
+            <h2 className="display-lg" style={{margin:'12px 0 0', maxWidth:520}}>
               Stories from the clinic.
             </h2>
           </div>
@@ -26,7 +26,7 @@ function Blog() {
             <div className="iris-ring" style={{width:120, height:120, right:-40, top:-40, borderColor:'var(--iris-500)'}}/>
             <div className="iris-ring" style={{width:120, height:120, right:-40, top:-40, borderColor:'var(--coral-300)', animationDelay:'1.2s'}}/>
             <span style={{display:'inline-block', padding:'4px 10px', borderRadius:999, background:'rgba(255,255,255,0.1)', fontSize:11, fontWeight:600, letterSpacing:'.08em', textTransform:'uppercase', marginBottom:16}}>Featured</span>
-            <h3 style={{fontFamily:'var(--font-display)', fontSize:36, fontWeight:400, lineHeight:'42px', color:'white', margin:'0 0 12px', maxWidth:440}}>
+            <h3 className="blog-feature-title" style={{fontFamily:'var(--font-display)', fontSize:36, fontWeight:400, lineHeight:'42px', color:'white', margin:'0 0 12px', maxWidth:440}}>
               Why you shouldn't ignore jioni headaches.
             </h3>
             <p style={{fontSize:15, color:'var(--iris-100)', lineHeight:'24px', maxWidth:440, margin:'0 0 20px'}}>
@@ -34,9 +34,9 @@ function Blog() {
             </p>
             <a href="#" style={{color:'white', fontWeight:600, textDecoration:'none', borderBottom:'1px solid rgba(255,255,255,0.4)', paddingBottom:2}}>Read the post →</a>
           </article>
-          <article style={{borderRadius:22, background:'var(--coral-500)', color:'white', padding:36, position:'relative', overflow:'hidden', minHeight:280}}>
+          <article className="blog-card-md" style={{borderRadius:22, background:'var(--coral-500)', color:'white', padding:36, position:'relative', overflow:'hidden', minHeight:280}}>
             <span style={{display:'inline-block', padding:'4px 10px', borderRadius:999, background:'rgba(255,255,255,0.18)', fontSize:11, fontWeight:600, letterSpacing:'.08em', textTransform:'uppercase', marginBottom:16}}>Nutrition</span>
-            <h3 style={{fontFamily:'var(--font-display)', fontSize:30, fontWeight:400, lineHeight:'36px', color:'white', margin:'0 0 12px'}}>
+            <h3 className="blog-sub-title" style={{fontFamily:'var(--font-display)', fontSize:30, fontWeight:400, lineHeight:'36px', color:'white', margin:'0 0 12px'}}>
               6 foods in your local market that protect your eyes.
             </h3>
             <p style={{fontSize:14, color:'rgba(255,255,255,0.9)', lineHeight:'22px', margin:'0 0 20px'}}>
@@ -46,7 +46,7 @@ function Blog() {
           </article>
         </div>
 
-        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:14}}>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap:14}}>
           {posts.map((p,i) => (
             <article key={i} className="card" style={{padding:22, display:'flex', flexDirection:'column', gap:10}}>
               <span style={{fontSize:11, fontWeight:600, color:colors[i%colors.length], letterSpacing:'.1em', textTransform:'uppercase'}}>{p.tag}</span>
@@ -59,7 +59,15 @@ function Blog() {
           ))}
         </div>
       </div>
-      <style>{`@media (max-width:860px) { .blog-featured { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (max-width:860px) { .blog-featured { grid-template-columns: 1fr !important; } }
+        @media (max-width: 640px) {
+          .blog-card-lg { padding: 24px 20px !important; min-height: 0 !important; }
+          .blog-card-md { padding: 22px 18px !important; min-height: 0 !important; }
+          .blog-feature-title { font-size: 28px !important; line-height: 34px !important; }
+          .blog-sub-title { font-size: 24px !important; line-height: 30px !important; }
+        }
+      `}</style>
     </section>
   );
 }

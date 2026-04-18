@@ -26,12 +26,12 @@ function Booking() {
   const canSubmit = name && phone && date && slot;
 
   return (
-    <section id="book" style={{padding:'96px 0', background:'var(--cream-50)', position:'relative', overflow:'hidden'}}>
+    <section id="book" className="py-section" style={{background:'var(--cream-50)', position:'relative', overflow:'hidden'}}>
       <AnimatedBg variant="light"/>
       <div className="container booking-grid" style={{position:'relative', zIndex:2, display:'grid', gridTemplateColumns:'1fr 1fr', gap:64, alignItems:'start'}}>
         <div>
           <span className="eyebrow">Book in 2 minutes</span>
-          <h2 className="display-lg" style={{fontSize:44, lineHeight:'50px', margin:'12px 0 16px'}}>
+          <h2 className="display-lg" style={{margin:'12px 0 16px'}}>
             Tell us what's blurry. We'll take it from there.
           </h2>
           <p style={{fontSize:17, color:'var(--ink-700)', maxWidth:440}}>
@@ -155,6 +155,7 @@ function Calendar({ month, setMonth, selected, onSelect }) {
       position:'absolute', top:'calc(100% + 6px)', left:0, right:0, zIndex:20,
       background:'white', border:'1.5px solid var(--line-200)', borderRadius:14,
       padding:14, boxShadow:'var(--shadow-lg)',
+      maxHeight: 'min(70vh, 400px)', overflowY: 'auto', WebkitOverflowScrolling: 'touch',
     }}>
       <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10}}>
         <button onClick={()=>setMonth(new Date(year, mo-1, 1))} style={calNavBtn} aria-label="Prev">‹</button>
@@ -243,7 +244,10 @@ function CheckRow({text}) {
 }
 
 const bookingStyle = document.createElement('style');
-bookingStyle.textContent = `@media (max-width: 860px) { .booking-grid { grid-template-columns: 1fr !important; gap: 36px !important; } }`;
+bookingStyle.textContent = `
+  @media (max-width: 860px) { .booking-grid { grid-template-columns: 1fr !important; gap: 36px !important; } }
+  @media (max-width: 480px) { .booking-grid { gap: 28px !important; } }
+`;
 document.head.appendChild(bookingStyle);
 
 window.Booking = Booking;

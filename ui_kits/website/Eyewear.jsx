@@ -72,12 +72,12 @@ function Eyewear() {
   const c = categories[cat];
 
   return (
-    <section id="eyewear" style={{padding:'96px 0', background:'var(--cream-50)', position:'relative', overflow:'hidden'}}>
+    <section id="eyewear" className="py-section" style={{background:'var(--cream-50)', position:'relative', overflow:'hidden'}}>
       <AnimatedBg variant="cream"/>
       <div className="container" style={{position:'relative', zIndex:2}}>
         <div style={{textAlign:'center', maxWidth:680, margin:'0 auto 40px'}}>
           <span className="eyebrow">Eyewear collection</span>
-          <h2 className="display-lg" style={{fontSize:44, lineHeight:'50px', margin:'12px 0 12px'}}>
+          <h2 className="display-lg" style={{margin:'12px 0 12px'}}>
             Luxury, durable, everyday — <em style={{color:'var(--iris-700)'}}>every taste fulfilled.</em>
           </h2>
           <p style={{color:'var(--ink-500)', fontSize:17, margin:'0 auto', maxWidth:540}}>
@@ -85,7 +85,7 @@ function Eyewear() {
           </p>
         </div>
 
-        <div style={{display:'flex', gap:8, flexWrap:'wrap', justifyContent:'center', marginBottom:36}}>
+        <div className="eyewear-cats" style={{display:'flex', gap:8, flexWrap:'wrap', justifyContent:'center', marginBottom:36}}>
           {categories.map((cc, i) => (
             <button key={cc.id} onClick={()=>setCat(i)} style={{
               padding:'10px 18px', borderRadius:999, cursor:'pointer',
@@ -107,12 +107,14 @@ function Eyewear() {
             <div style={{position:'absolute', top:0, left:0, right:0, bottom:0, background:'radial-gradient(ellipse at 50% 110%, rgba(255,255,255,0.06), transparent 60%)'}}/>
             <span style={{position:'absolute', top:18, right:20, fontSize:10, letterSpacing:'.2em', color:c.accent, fontWeight:700, zIndex:3}}>{c.badge}</span>
             <div key={c.id} className="glasses-3d-stage">
-              <Glasses3D frame={c.frame}/>
+              <div className="glasses-scale-wrap">
+                <Glasses3D frame={c.frame}/>
+              </div>
             </div>
             {/* floor reflection */}
             <div style={{position:'absolute', left:'50%', bottom:'18%', width:'55%', height:12, transform:'translateX(-50%)', background:'radial-gradient(ellipse, rgba(0,0,0,0.35), transparent 70%)', filter:'blur(4px)', zIndex:1}}/>
           </div>
-          <div style={{padding:40, display:'flex', flexDirection:'column', justifyContent:'center'}}>
+          <div className="eyewear-copy" style={{padding:40, display:'flex', flexDirection:'column', justifyContent:'center'}}>
             <span style={{fontSize:12, fontWeight:600, color:c.accent, textTransform:'uppercase', letterSpacing:'.14em', marginBottom:12, mixBlendMode:'normal'}}>{c.label}</span>
             <h3 style={{fontFamily:'var(--font-display)', fontSize:34, fontWeight:400, lineHeight:'40px', color:'var(--ink-900)', margin:'0 0 6px'}}>{c.sw}</h3>
             <p style={{fontSize:19, color:'var(--ink-700)', margin:'0 0 24px', lineHeight:'28px'}}>{c.tagline}</p>
@@ -179,12 +181,30 @@ function Eyewear() {
         @media (prefers-reduced-motion: reduce){
           .glasses-3d, .contact-3d { animation: none !important; }
         }
+        .glasses-scale-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 100%;
+        }
+        @media (max-width: 520px) {
+          .glasses-scale-wrap { transform: scale(0.82); transform-origin: center center; }
+        }
+        @media (max-width: 380px) {
+          .glasses-scale-wrap { transform: scale(0.72); transform-origin: center center; }
+          .eyewear-cats { gap: 6px !important; margin-bottom: 28px !important; }
+          .eyewear-cats button { padding: 8px 12px !important; font-size: 12px !important; }
+        }
         @media (max-width: 860px) {
           .eyewear-feature { grid-template-columns: 1fr !important; }
           .eyewear-stats { grid-template-columns: repeat(2, 1fr) !important; }
+          .eyewear-copy { padding: 28px 22px !important; }
         }
         @media (max-width: 520px) {
           .eyewear-stats { grid-template-columns: 1fr 1fr !important; }
+          .eyewear-copy { padding: 22px 18px !important; }
+          .eyewear-copy h3 { font-size: 28px !important; line-height: 34px !important; }
         }
       `}</style>
     </section>

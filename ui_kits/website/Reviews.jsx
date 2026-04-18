@@ -16,17 +16,17 @@ function Reviews() {
   const langLabel = {'sw':'Swahili', 'en':'English', 'sw-en':'Swahili + English'};
 
   return (
-    <section id="reviews" style={{padding:'96px 0', background:'var(--iris-900)', color:'white', position:'relative', overflow:'hidden'}}>
+    <section id="reviews" className="py-section" style={{background:'var(--iris-900)', color:'white', position:'relative', overflow:'hidden'}}>
       <div style={{position:'absolute', width:400, height:400, borderRadius:'50%', background:'var(--iris-700)', filter:'blur(80px)', left:-100, top:-100, opacity:.6}}/>
       <div className="container" style={{position:'relative', zIndex:2}}>
-        <div style={{display:'flex', alignItems:'flex-end', justifyContent:'space-between', marginBottom:40}}>
-          <div>
+        <div className="reviews-toolbar" style={{display:'flex', alignItems:'flex-end', justifyContent:'space-between', marginBottom:40, flexWrap:'wrap', gap:16}}>
+          <div style={{minWidth:0, flex:'1 1 280px'}}>
             <span className="eyebrow" style={{color:'var(--iris-300)'}}>Real patients, real voices</span>
-            <h2 className="display-lg" style={{color:'white', fontSize:44, lineHeight:'50px', margin:'12px 0 0', maxWidth:560}}>
+            <h2 className="display-lg" style={{color:'white', margin:'12px 0 0', maxWidth:560}}>
               <em style={{color:'var(--coral-300)'}}>Huduma ni top.</em> And other things our patients have said.
             </h2>
           </div>
-          <div style={{display:'flex', gap:8}}>
+          <div style={{display:'flex', gap:8, flexShrink:0}}>
             <button onClick={()=>setIdx(i=>(i-1+reviews.length)%reviews.length)} aria-label="Previous" style={navBtn}>←</button>
             <button onClick={()=>setIdx(i=>(i+1)%reviews.length)} aria-label="Next" style={navBtn}>→</button>
           </div>
@@ -37,7 +37,7 @@ function Reviews() {
             <div key={idx+'-'+i} style={{
               background:'rgba(255,255,255,0.06)',
               border:'1px solid rgba(255,255,255,0.1)',
-              borderRadius:14, padding:24, minHeight:220,
+              borderRadius:14, padding:'20px 18px', minHeight:200,
               display:'flex', flexDirection:'column', justifyContent:'space-between'
             }}>
               <p style={{fontSize:16, lineHeight:'26px', color:'white', margin:0}}>"{r.text}"</p>
@@ -61,6 +61,10 @@ function Reviews() {
       </div>
       <style>{`
         @media (max-width: 960px) { .reviews-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 640px) {
+          .reviews-toolbar { align-items: flex-start !important; flex-direction: column; }
+          .reviews-grid > div { min-height: 0 !important; padding: 18px 16px !important; }
+        }
       `}</style>
     </section>
   );
