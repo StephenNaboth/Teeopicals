@@ -12,10 +12,14 @@ function Nav() {
     document.body.style.overflow = open ? 'hidden' : '';
   }, [open]);
   const links = ['Clinic', 'Eyewear', 'Wellness', 'Blog', 'Reviews', 'Visit'];
+  const navH = scrolled ? 56 : 72;
   return (
+    <>
     <nav style={{
       position: 'sticky', top: 0, zIndex: 50,
-      height: scrolled ? 56 : 72,
+      width: '100%',
+      boxSizing: 'border-box',
+      height: navH,
       background: scrolled ? 'rgba(250,246,239,0.82)' : 'transparent',
       backdropFilter: scrolled ? 'blur(12px)' : 'none',
       WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
@@ -57,16 +61,23 @@ function Nav() {
           </div>
         </button>
       </div>
-
-      {/* Mobile drawer */}
-      <div style={{
-        position:'fixed', inset:`${scrolled?56:72}px 0 0 0`, zIndex:49,
-        background:'var(--cream-50)', padding:'32px 20px',
-        transform: open ? 'translateY(0)' : 'translateY(-8px)',
-        opacity: open ? 1 : 0, pointerEvents: open ? 'auto' : 'none',
-        transition: 'all 260ms var(--ease-out)',
-      }} className="show-mobile">
-        <div style={{display:'flex', flexDirection:'column', gap:4}}>
+    </nav>
+      {/* Outside <nav> so position:fixed is not trapped by nav backdrop-filter */}
+      <div
+        id="mobile-nav-drawer"
+        style={{
+          position:'fixed', top: navH, left: 0, right: 0, bottom: 0, zIndex: 40,
+          background:'var(--cream-50)',
+          padding:'32px max(20px, env(safe-area-inset-right)) 32px max(20px, env(safe-area-inset-left))',
+          transform: open ? 'translateY(0)' : 'translateY(-8px)',
+          opacity: open ? 1 : 0, pointerEvents: open ? 'auto' : 'none',
+          transition: 'opacity 260ms var(--ease-out), transform 260ms var(--ease-out)',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+        }}
+        className="show-mobile"
+        aria-hidden={!open}>
+        <div className="container" style={{display:'flex', flexDirection:'column', gap:4}}>
           {links.map((l,i) => (
             <a key={l} href={`#${l.toLowerCase()}`} onClick={()=>setOpen(false)} style={{
               padding:'18px 4px', fontSize:24, fontFamily:'var(--font-display)',
@@ -85,7 +96,7 @@ function Nav() {
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
 
